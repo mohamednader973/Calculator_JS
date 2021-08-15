@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <style media="screen">
+      button{
+        width:100%;
+        height:50px;
+        border:none;
+      }
+      td{
+        width:100px;
+        padding:3%;;
+      }
+      table{
+        margin:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calc" style="width:32%;height:60%;margin:auto; background-color:#02b8a7;">
+      <h1 id="result" style="margin:auto; text-align:center; color:#6311d6;">Evaluate</h1>
+      <input type="text" id="textInput" style="width:95%; height=10%; background-color:#d4d9d8; border:none; text-align:center; margin:5px;">
+      <table>
+        <tr>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="writeLetter('%')">%</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="clearchar()">C</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="cleardata()">CE</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="writeLetter('+')">+</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="writeLetter('1')">1</button></td>
+          <td><button type="button" onclick="writeLetter('2')">2</button></td>
+          <td><button type="button" onclick="writeLetter('3')">3</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="writeLetter('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="writeLetter('4')">4</button></td>
+          <td><button type="button" onclick="writeLetter('5')">5</button></td>
+          <td><button type="button" onclick="writeLetter('6')">6</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="writeLetter('*');">X</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="writeLetter('7')">7</button></td>
+          <td><button type="button" onclick="writeLetter('8')">8</button></td>
+          <td><button type="button" onclick="writeLetter('9')">9</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="writeLetter('/')">/</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="clearLcd();">*</button></td>
+          <td><button type="button" onclick="writeLetter('0')">0</button></td>
+          <td><button type="button" onclick="writeLetter('#')">#</button></td>
+          <td><button type="button" style="background-color:#a6f5ee;" onclick="calculate()">=</button></td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      function writeLetter(num){
+        document.getElementById("textInput").value+=num;
+      }
+      function cleardata(){
+      document.getElementById("textInput").value="";
+      }
+      function clearchar(){
+      let str=document.getElementById("textInput").value;
+      //str.slice(0, -1);
+      console.log(str);
+      document.getElementById("textInput").value=str.slice(0, -1);
+      }
+      function calculate(){
+        let total=document.getElementById("textInput").value;
+        totalstr=eval(total);
+        console.log(totalstr);
+        //document.getElementById("textInput").value=eval(total);
+        document.getElementById("result").innerHTML=totalstr;
+      }
+      function clearLcd(){
+        document.getElementById("result").innerHTML="Evaluate"
+      }
+    </script>
+  </body>
+</html>
